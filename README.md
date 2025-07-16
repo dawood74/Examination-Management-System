@@ -41,8 +41,8 @@ This project serves as a practical demonstration of building modern web applicat
 ### 👩‍🎓 Student Portal
 -   **View Available Exams:** A clean, user-friendly list of all exams available to the student.
 -   **Student Dashboard:** Shows upcoming or pending examinations.
--   **[Optional Extension] Take Exams:** Functionality for students to take an exam within a timed environment.
--   **[Optional Extension] View Results:** Check scores and review answers after submission.
+-   ** Take Exams:** Functionality for students to take an exam within a timed environment.
+-   ** View Results:** Check scores and review answers after submission.
 
 ---
 
