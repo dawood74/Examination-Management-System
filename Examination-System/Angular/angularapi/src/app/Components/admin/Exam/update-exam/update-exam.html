@@ -1,0 +1,29 @@
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+  <!-- <h2>Update Exam</h2>
+
+  <label>Title</label>
+  <input formControlName="title" class="form-input" />
+
+  <label>Description</label>
+  <textarea formControlName="description" class="form-input"></textarea> -->
+
+  <!-- Questions -->
+  <div formArrayName="questions">
+    <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i" class="question-block">
+      <label>Question {{ i + 1 }}</label>
+      <input formControlName="text" placeholder="Enter question text" class="form-input" />
+
+      <!-- Options -->
+      <div formArrayName="options">
+        <div *ngFor="let option of getOptions(i).controls; let j = index" [formGroupName]="j" class="option-item">
+          <input formControlName="text" placeholder="Option text" class="form-input" />
+          <label>
+            <input type="radio" [formControlName]="'isCorrect'" [value]="true" /> Correct
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit">Update Exam</button>
+</form>

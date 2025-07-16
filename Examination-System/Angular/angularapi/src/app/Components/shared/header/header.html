@@ -1,0 +1,60 @@
+<!-- <nav class="navbar navbar-expand-lg custom-navbar" style="background-color: #e3f2fd;" data-bs-theme="light">
+    <div class="nav-container">
+        <a class="logo" routerLink="/">
+            <div class="logo-icon">🎓</div>
+            <span class="fw-bold">EvalEdge</span>
+        </a>
+
+        @if (isLoggedIn()) {
+            <div class="user-section">
+
+                <button class="btn btn-sm btn-outline-primary ms-2" (click)="logout()">Logout</button>
+            </div>
+        } @else {
+            <div class="nav-links ms-auto">
+                <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+                <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+            </div>
+        }
+    </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg custom-navbar" style="background-color: #e3f2fd;" data-bs-theme="light">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">EvalEdge</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        @if(isLoggedIn())
+        {
+        @if(user()?.role == 'Admin')
+        {
+        <li class="nav-item" *ngFor="let item of adminNavItems">
+          <a class="nav-link" [routerLink]="item.route" routerLinkActive="active">
+            <i [class]="item.icon" *ngIf="item.icon"></i>
+            {{ item.label }}
+          </a>
+        </li>
+        }
+        @else
+        {
+        <li class="nav-item" *ngFor="let item of studentNavItems">
+          <a class="nav-link" [routerLink]="item.route" routerLinkActive="active">
+            <i [class]="item.icon" *ngIf="item.icon"></i>
+            {{ item.label }}
+          </a>
+        </li>
+        }
+        <button class="nav-link" (click)="logout()">Logout</button>
+        }
+        @else {
+          <button class="nav-link" routerLink="/login">Login</button>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
